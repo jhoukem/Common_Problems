@@ -30,7 +30,7 @@ public class Main {
 				result.add(calculSet(convives));
 				// Reset the data between each calculation.
 				for(Convive c : convives){
-					c.hasSeat = false;
+					c.setHasSeat(false);
 				}
 			}
 
@@ -59,7 +59,7 @@ public class Main {
 		}
 	}
 
-	private static ArrayList<Table> calculSet(ArrayList<Convive> convives) {
+	public static ArrayList<Table> calculSet(ArrayList<Convive> convives) {
 
 		ArrayList<Table> tables = new ArrayList<Table>();
 		// Add the first table.
@@ -77,21 +77,21 @@ public class Main {
 				alea = (int) (Math.random() * convives.size());
 				a = convives.get(alea);
 			}
-			while(a.hasSeat || !tables.get(tables.size() - 1).support(a));
+			while(a.isHasSeat() || !tables.get(tables.size() - 1).support(a));
 
 			// Add the convive to the table.
 			tables.get(tables.size() - 1).add(a);
-			a.hasSeat = true;
+			a.setHasSeat(true);
 
 			// Check for adding new table and stopping the calculation.
 			allPlaced = true;
 			needNewTable = true;
 			for(Convive c : convives){
-				if(!c.hasSeat){
+				if(!c.isHasSeat()){
 					allPlaced = false;
 				}
 				// If the table has a seat for the convive.
-				if(!c.hasSeat && tables.get(tables.size() - 1).support(c)){
+				if(!c.isHasSeat() && tables.get(tables.size() - 1).support(c)){
 					needNewTable = false;
 				}
 			}

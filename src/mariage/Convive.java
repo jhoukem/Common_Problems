@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Convive {
 
 	private int data[];
-	protected boolean hasSeat = false;
+	private boolean hasSeat = false;
 
 	public Convive(String line[]){	
 
@@ -54,6 +54,22 @@ public class Convive {
 				return false;
 		}
 		return true;
+	}
+	
+	public boolean support(int idConvive) {
+		for(int i = 1; i < data.length; i++){
+			if(data[i] == idConvive)
+				return false;
+		}
+		return true;
+	}
+
+	public boolean isHasSeat() {
+		return hasSeat;
+	}
+
+	public void setHasSeat(boolean hasSeat) {
+		this.hasSeat = hasSeat;
 	}
 
 }
