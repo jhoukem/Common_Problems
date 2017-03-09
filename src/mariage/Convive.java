@@ -5,13 +5,12 @@ import java.util.ArrayList;
 
 public class Convive {
 
-	int data[];
-	boolean placed = false;
+	private int data[];
+	protected boolean hasSeat = false;
 
 	public Convive(String line[]){	
 
 		data = new int[line.length];
-
 		for(int i = 0; i< line.length; i++){
 			data[i] = Integer.parseInt(line[i]);
 		}
@@ -27,7 +26,6 @@ public class Convive {
 		for(int i = 1; i < data.length; i++){
 			unsupported.add(data[i]);
 		}
-
 		return unsupported;
 	}
 

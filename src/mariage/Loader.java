@@ -27,7 +27,6 @@ public class Loader {
 		while ((strLine = br.readLine()) != null)   {
 			data.add(new Convive(strLine.split(" ")));
 		}
-
 		return data;
 	}
 

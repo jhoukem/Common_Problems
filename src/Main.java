@@ -5,9 +5,9 @@ import java.util.Collections;
 
 public class Main {
 
-	/**
-	 * @param args the command line arguments
-	 */
+	private static boolean VERBOSE = false;
+
+
 	public static void main(String[] args) {
 
 		int size = 100;
@@ -19,23 +19,26 @@ public class Main {
 		for (int i = 0; i < size; i++) {	
 			int quality = (int) (Math.random() * 10) + 1;
 			int weight = (int) (Math.random() * 10) + 1;
-			
+
 			Book book = new Book(quality, weight);
 			books[i] = book;
 		}
 
-		/*for (int i = 0; i < size; i++) {
-			System.out.println("Book number " + i + " weight " + books[i].getWeight() + " and a "
-					+ books[i].getQuality() + " QA value");
-		}*/
+		if(VERBOSE){
+			for (int i = 0; i < size; i++) {
+				System.out.println("Book number " + i + " weight " + books[i].getWeight() + " and a "
+						+ books[i].getQuality() + " QA value");
+			}
+		}
 
+		// Calculate x iteration.
 		for(int i = 0; i < iteration; i++){
 			results.add(calculResult(books, size, freeSpace));
 			for (int j = 0; j < size; j++) {
 				books[j].setTaken(false);
 			}
 		}
-
+		// Sort the result and keep the best one.
 		Collections.sort(results);
 		System.out.println("The best result of the " + iteration + " iterations is :\n"
 				+ results.get(0).toString());
@@ -57,7 +60,7 @@ public class Main {
 
 			int bookWeight = books[selection].getWeight();
 
-			// Si on peut ajouter le livre � la selection.
+			// If the book can be added to the selection.
 			if (result.getFreeSpace() - bookWeight >= 0) {
 				result.setFreeSpace(result.getFreeSpace() - bookWeight);
 				result.setUsedSpace(result.getUsedSpace() + bookWeight);

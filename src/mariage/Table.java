@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Table {
 
-
 	ArrayList<Convive> convives = new ArrayList<Convive>();
 
 	public void add(Convive a) {
@@ -25,10 +24,7 @@ public class Table {
 		for(Convive c : convives){
 			out += c.getID() + " ";
 		}
-
 		return out;
 	}
-
-
 
 }
