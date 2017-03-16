@@ -13,7 +13,7 @@ public class Main {
 		Loader ld = new Loader();
 		try {
 
-			ArrayList<Convive> convives = ld.getData("example2.txt");
+			ArrayList<Convive> convives = ld.getConviveData("example2.txt");
 
 			if(VERBOSE){
 				for(int i = 0; i < convives.size(); i++){

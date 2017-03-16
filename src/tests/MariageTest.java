@@ -21,7 +21,7 @@ public class MariageTest {
 		Loader ld = new Loader();
 		try {
 
-			ArrayList<Convive> convives = ld.getData("example1.txt");
+			ArrayList<Convive> convives = ld.getConviveData("example1.txt");
 
 			// Array of result set.
 			ArrayList<ArrayList<Table>> result = new ArrayList<ArrayList<Table>>();
@@ -60,7 +60,7 @@ public class MariageTest {
 
 		Loader ld = new Loader();
 		try {
-			ArrayList<Convive> convives = ld.getData("example1.txt");
+			ArrayList<Convive> convives = ld.getConviveData("example1.txt");
 			
 			// Assert that the convive 1 doesn't support the 2 and 5.
 			Convive c = convives.get(0);

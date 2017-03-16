@@ -1,4 +1,5 @@
-package mariage;
+package book;
+
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -9,11 +10,9 @@ import java.util.ArrayList;
 
 public class Loader {
 
+	public ArrayList<Book> getBookData(String path) throws IOException{
 
-
-	public ArrayList<Convive> getConviveData(String path) throws IOException{
-
-		ArrayList<Convive> data = new ArrayList<Convive>();
+		ArrayList<Book> data = new ArrayList<Book>();
 
 		FileInputStream fstream = new FileInputStream(path);
 		DataInputStream in = new DataInputStream(fstream);
@@ -25,9 +24,22 @@ public class Loader {
 
 		//Read File Line By Line
 		while ((strLine = br.readLine()) != null)   {
-			data.add(new Convive(strLine.split(" ")));
+			data.add(new Book(strLine.split(" ")));
 		}
 		return data;
+	}
+
+	public int getFreeSpace(String path) throws IOException {
+
+		FileInputStream fstream = new FileInputStream(path);
+		DataInputStream in = new DataInputStream(fstream);
+		BufferedReader br = new BufferedReader(new InputStreamReader(in));
+		String strLine;
+
+		//First line specify the number of line.
+		strLine = br.readLine();
+		
+		return Integer.parseInt(strLine.split(" ")[1]);
 	}
 
 }

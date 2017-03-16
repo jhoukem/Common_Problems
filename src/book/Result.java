@@ -1,9 +1,11 @@
+package book;
 
 public class Result implements Comparable<Result>{
 
 	private int nbBook;
 	private int freeSpace;
 	private int usedSpace;
+	private float quality;
 	
 	public Result(int freeSpace){
 		nbBook = 0;
@@ -12,8 +14,8 @@ public class Result implements Comparable<Result>{
 	}
 	
 	public String toString() {
-		return "The selection contains " + nbBook + " books with an average"
-				+ " of " + usedSpace/nbBook + " quality point per book and " + freeSpace + " unused space";
+		return "The selection contains " + nbBook + " books with total of "
+				+ quality + " quality point and " + freeSpace + " unused space";
 	}
 	
 	public String toString2() {
@@ -52,7 +54,15 @@ public class Result implements Comparable<Result>{
 	 * @return the score of the result.
 	 */
 	private int getScore() {
-		return nbBook + (nbBook/usedSpace) - freeSpace;
+		return (int) (nbBook + quality - freeSpace);
+	}
+
+	public float getQuality() {
+		return quality;
+	}
+
+	public void setQuality(float quality) {
+		this.quality = quality;
 	}
 	
 }
