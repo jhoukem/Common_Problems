@@ -12,7 +12,7 @@ public class Table {
 
 	public boolean support(Convive a) {
 		for(Convive c : convives){
-			if(!c.support(a))
+			if(!c.support(a) || !a.support(c))
 				return false;
 		}
 		return true;
