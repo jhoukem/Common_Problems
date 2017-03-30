@@ -14,6 +14,9 @@ import org.junit.Test;
 
 public class MariageTest {
 
+	private static final String RSC_DATA_WEDDING1 = "rsc/data_wedding1.txt";
+	private static final String RSC_DATA_WEDDING2 = "rsc/data_wedding2.txt";
+
 	@Test
 	public void testCalcul() {
 
@@ -21,7 +24,7 @@ public class MariageTest {
 		Loader ld = new Loader();
 		try {
 
-			ArrayList<Convive> convives = ld.getConviveData("example1.txt");
+			ArrayList<Convive> convives = ld.getConviveData(RSC_DATA_WEDDING2);
 
 			// Array of result set.
 			ArrayList<ArrayList<Table>> result = new ArrayList<ArrayList<Table>>();
@@ -45,6 +48,7 @@ public class MariageTest {
 					for(Convive a : table.getConvives()){
 						for(Convive b : table.getConvives()){
 							assertTrue(a.support(b));
+							assertTrue(b.support(a));
 						}
 					}
 				}
@@ -60,7 +64,7 @@ public class MariageTest {
 
 		Loader ld = new Loader();
 		try {
-			ArrayList<Convive> convives = ld.getConviveData("example1.txt");
+			ArrayList<Convive> convives = ld.getConviveData(RSC_DATA_WEDDING1);
 			
 			// Assert that the convive 1 doesn't support the 2 and 5.
 			Convive c = convives.get(0);
